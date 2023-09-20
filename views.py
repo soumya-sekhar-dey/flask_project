@@ -20,12 +20,6 @@ def get_json():
     return jsonify({'name': 'ssd', 'coolness': '5'})
 
 
-@views.route("/data")
-def get_data():
-    data = request.json
-    return jsonify(data)
-
-
 @views.route("/go-to-home")
 def go_to_home():
     return redirect(url_for("views.home"))
