@@ -20,6 +20,11 @@ def get_json():
     return jsonify({'name': 'ssd', 'coolness': '5'})
 
 
+@views.route("/run-the-script")
+def run_script():
+    return render_template("callbutton.html")
+
+
 @views.route("/go-to-home")
 def go_to_home():
     return redirect(url_for("views.home"))
