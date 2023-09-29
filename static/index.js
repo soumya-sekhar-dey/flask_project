@@ -1,10 +1,17 @@
 console.log("running");
 
 const executeButton = document.getElementById('executeButton');
-executeButton.addEventListener('click', () => {
-    const command = 'echo "Hello, World!"';
-
+if (executeButton){
+    executeButton.addEventListener('click', () => {
+    const command = executeButton.getAttribute('data-command');
+    console.log(command);
     //send http request to server
+    send_http_request(command);    
+    alert("Command Submitted!");
+});
+}
+
+function send_http_request(command){
     fetch('/execute-command', {
         method: 'POST',
         body: JSON.stringify({command}),
@@ -21,6 +28,4 @@ executeButton.addEventListener('click', () => {
     .catch(error => {
     console.error('Error:', error);
     })
-
-    alert("Command Submitted!");
-});
+}
